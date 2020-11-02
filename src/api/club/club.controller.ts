@@ -32,9 +32,7 @@ export class ClubController {
     @Body('clubId') clubId: string,
     @Body('name') name: string,
     @Body('score') score: number) {
-
     return await this.clubService.create({ clubId, name, score })
-
   }
 
   @Post('pagination')
@@ -42,30 +40,22 @@ export class ClubController {
     @Body('numberInOnePage') numberInOnePage: number,
     @Body('page') page: number,
   ) {
-
     return await this.clubService.pagination(numberInOnePage, page)
-
   }
 
   @Post('search')
   async search(
     @Body('key') key: string,
-
   ) {
-
     return await this.clubService.search(key)
-
   }
 
   @Post('filterByScore')
   async filterByScore(
     @Body('min') min: number,
     @Body('max') max: number,
-
   ) {
-
     return await this.clubService.filterByScore(min, max)
-
   }
 
   @Put()

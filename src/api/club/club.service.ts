@@ -35,13 +35,11 @@ export class ClubService {
   }
 
   async filterByScore(min, max): Promise<Club[]> {
-
     return this.clubModel.find().where('score').gt(min - 1).lt(max + 1).exec()
   }
 
 
   async update(clubInfo: { _id: string, name: string, score: number }): Promise<Club> {
-
     const id = clubInfo._id;
     const updateObj: any = {};
     if (clubInfo.name) {
@@ -50,12 +48,10 @@ export class ClubService {
     if (clubInfo.score) {
       updateObj.score = clubInfo.score
     }
-
     return this.clubModel.findOneAndUpdate({ _id: id }, updateObj, { useFindAndModify: false }).exec();
   }
 
   async delete(id: string): Promise<{}> {
-
     return await this.clubModel.deleteOne({ _id: id }).exec()
   }
 }
